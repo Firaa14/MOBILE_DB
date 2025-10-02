@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'providers/auth_provider.dart';
-import 'ui/splash_page.dart';
+import 'ui/home_page.dart';
+import 'ui/about_page.dart';
+import 'ui/contact_page.dart';
+import 'ui/input_page.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class App extends StatelessWidget {
+  const App({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => AuthProvider())],
-      child: MaterialApp(
-        title: 'Login + DB Demo',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.indigo),
-        home: const SplashPage(),
-      ),
+    return MaterialApp(
+      title: 'Navigation Demo',
+      initialRoute: '/',
+      routes: {
+        '/': (context) => HomePage(),
+        '/about': (context) => AboutPage(),
+        '/contact': (context) => ContactPage(),
+        '/input': (context) => InputPage(),
+      },
     );
   }
 }
